@@ -1,0 +1,8 @@
+.*
+!.gitattributes
+!.gitignore
+*.log
+
+/_
+/node_modules
+/vendor

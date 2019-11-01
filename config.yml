@@ -1,0 +1,12 @@
+bump:
+  - readme.txt
+  - better-thumbnail-sizes.php
+language:
+  destination: languages/
+  domain: better-thumbnail-sizes
+  team: Gemini Labs <support@geminilabs.io>
+  translator: Paul Ryley <paul@geminilabs.io>
+  watch:
+    - plugin/**/*.php
+    - views/**/*.php
+    - '*.php'

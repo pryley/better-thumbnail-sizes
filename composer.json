@@ -1,0 +1,37 @@
+{
+  "name": "pryley/better-thumbnail-sizes",
+  "type": "wordpress-plugin",
+  "description": "WordPress plugin that adds a Media option to place the image sizes in a sub-directory",
+  "keywords": [
+    "thumbnails",
+    "plugin",
+    "wordpress"
+  ],
+  "license": "GPL-3.0+",
+  "authors": [
+    {
+      "name": "Paul Ryley",
+      "email": "paul@geminilabs.io"
+    }
+  ],
+  "config": {
+    "preferred-install": "dist"
+  },
+  "archive": {
+    "exclude": [
+      "/+",
+      "/.*",
+      "/*.md",
+      "/*.js",
+      "/*.json",
+      "/*.lock",
+      "/*.sh"
+    ]
+  },
+  "prefer-stable": true,
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=5.6",
+    "composer/installers": "^1.5.0"
+  }
+}
