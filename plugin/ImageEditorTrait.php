@@ -13,7 +13,10 @@ trait ImageEditorTrait
     public function generate_filename($suffix = null, $destPath = null, $extension = null)
     {
         $filename = parent::generate_filename($suffix, $destPath, $extension);
-        return $this->modifyFilePath($filename);
+        if (static::supports_mime_type(wp_get_image_mime($filename))) {
+            return $this->modifyFilePath($filename)
+        }
+        return $filename;
     }
 
     /**
@@ -24,7 +27,10 @@ trait ImageEditorTrait
     protected function get_output_format($filename = null, $mimeType = null)
     {
         $output = parent::get_output_format($filename, $mimeType);
-        if (!empty($output[0])) {
+        if (!empty($output[2])) {
+            $mimeType = $output[2];
+        }
+        if (!empty($output[0]) && static::supports_mime_type($mimeType)) {
             $output[0] = $this->modifyFilePath($output[0]);
         }
         return $output;
@@ -37,10 +43,16 @@ trait ImageEditorTrait
     protected function modifyFilePath($filename)
     {
         $path = wp_get_upload_dir()['basedir'];
-        $path = trailingslashit($path).trailingslashit(Application::SIZE_PREFIX);
         $file = pathinfo($filename, PATHINFO_BASENAME);
+        $subdir = str_replace($path, '', $filename);
+        $subdir = str_replace($file, '', $subdir);
+        $modifiedPath = sprintf('%s%s%s',
+            untrailingslashit($path),
+            trailingslashit($subdir),
+            trailingslashit(Application::SIZE_PREFIX)
+        );
         return wp_mkdir_p($path)
-            ? $path.$file
+            ? $modifiedPath.$file
             : $filename;
     }
 }

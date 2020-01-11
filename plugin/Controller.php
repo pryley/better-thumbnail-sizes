@@ -82,7 +82,7 @@ class Controller
             $prefix = trailingslashit(Application::SIZE_PREFIX);
             $sizes = $meta['sizes'];
             foreach ($sizes as $size => $data) {
-                if (!isset($data['file'])) {
+                if (!$this->isMimeTypeSupported($data)) {
                     continue;
                 }
                 $file = str_replace($prefix, '', $data['file']);
@@ -114,5 +114,16 @@ class Controller
             'checked_attribute' => checked(1, $this->optionValue, false),
             'name' => $this->optionName,
         ]);
+    }
+
+    /**
+     * @param array $size
+     * @return bool
+     */
+    public function isMimeTypeSupported($size)
+    {
+        return isset($size['file'])
+            && isset($size['mime_type'])
+            && wp_image_editor_supports(['mime_type' => $size['mime_type']]);
     }
 }
