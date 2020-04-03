@@ -7,7 +7,7 @@
  * Plugin Name: Better Thumbnail Sizes
  * Plugin URI:  https://wordpress.org/plugins/better-thumbnail-sizes
  * Description: Adds a Media option to place the image sizes in a sub-directory.
- * Version:     1.0.2
+ * Version:     1.1.0
  * Author:      Paul Ryley
  * Author URI:  https://profiles.wordpress.org/pryley#content-plugins
  * License:     GPL3

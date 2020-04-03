@@ -1,4 +1,4 @@
-# Copyright (C) 2019 better-thumbnail-sizes
+# Copyright (C) 2020 better-thumbnail-sizes
 # This file is distributed under the same license as the better-thumbnail-sizes package.
 msgid ""
 msgstr ""

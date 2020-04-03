@@ -123,7 +123,7 @@ class Controller
     public function isMimeTypeSupported($size)
     {
         return isset($size['file'])
-            && isset($size['mime_type'])
-            && wp_image_editor_supports(['mime_type' => $size['mime_type']]);
+            && isset($size['mime-type'])
+            && wp_image_editor_supports(['mime_type' => $size['mime-type']]);
     }
 }

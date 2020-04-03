@@ -14,7 +14,7 @@ trait ImageEditorTrait
     {
         $filename = parent::generate_filename($suffix, $destPath, $extension);
         if (static::supports_mime_type(wp_get_image_mime($filename))) {
-            return $this->modifyFilePath($filename)
+            return $this->modifyFilePath($filename);
         }
         return $filename;
     }
